@@ -1,4 +1,4 @@
-package com.example.miniprojetserviceweb.Model;
+package com.example.projetsoa.entity;
 
 import jakarta.persistence.Entity;
 

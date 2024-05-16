@@ -1,7 +1,8 @@
-package com.example.miniprojetserviceweb.Services;
+package com.example.projetsoa.service;
 
-import com.example.miniprojetserviceweb.Model.Enseignant;
-import com.example.miniprojetserviceweb.Repository.EnseignantRepository;
+
+import com.example.projetsoa.dao.EnseignantRepository;
+import com.example.projetsoa.entity.Enseignant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +35,6 @@ public class EnseignantService {
         enseignantRepository.deleteById(id);
     }
 
-    // Other methods as needed
+
 
 }

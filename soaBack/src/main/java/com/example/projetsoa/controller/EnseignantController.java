@@ -1,15 +1,16 @@
-package com.example.miniprojetserviceweb.Controller;
+package com.example.projetsoa.controller;
+import com.example.projetsoa.dao.EnseignantRepository;
+import com.example.projetsoa.entity.Enseignant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.example.miniprojetserviceweb.Model.Enseignant;
-import com.example.miniprojetserviceweb.Repository.EnseignantRepository;
+
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/enseignants")
+@RequestMapping("/api/enseignants")
 public class EnseignantController {
 
     @Autowired
