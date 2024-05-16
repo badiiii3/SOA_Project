@@ -30,10 +30,13 @@ public class EtudiantController {
 
     @PutMapping("/update/{id}")
     public Etudiant updateEtudiant(@PathVariable Long id, @RequestBody Etudiant etudiantDetails) {
+
         Etudiant etudiant = etudiantService.getEtudiantById(id);
         etudiant.setNom(etudiantDetails.getNom());
         etudiant.setPrenom(etudiantDetails.getPrenom());
         etudiant.setClasse(etudiantDetails.getClasse());
+        etudiant.setNbAbsences(etudiantDetails.getNbAbsences());
+        etudiant.setReussite(etudiantDetails.isReussite());
         return etudiantService.updateEtudiant(etudiant); // Pour mettre à jour, nous utilisons la même méthode que pour l'ajout
     }
 
@@ -70,6 +73,13 @@ public class EtudiantController {
         double tauxAbsence = ((double) totalAbsences / totalEtudiants) * 100.0;
         return ResponseEntity.status(HttpStatus.OK).body(tauxAbsence);
     }
+
+    @GetMapping("/get/{id}")
+    public Etudiant getEtudiantById(@PathVariable Long id) {
+        Etudiant etudiant = etudiantService.getEtudiantById(id);
+        return etudiant;
+    }
+
 
 
 }

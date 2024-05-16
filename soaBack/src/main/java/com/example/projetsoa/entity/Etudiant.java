@@ -55,9 +55,11 @@ public class Etudiant {
     public boolean isReussite() {
         return Reussite;
     }
+
     public void setReussite(boolean Reussite) {
         this.Reussite = Reussite;
     }
+
 
     // Getters and setters
 

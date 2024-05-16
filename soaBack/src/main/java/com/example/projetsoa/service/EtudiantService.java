@@ -30,7 +30,21 @@ public class EtudiantService {
     }
 
     public Etudiant updateEtudiant(Etudiant etudiant) {
-        // Add any necessary validation or business logic before updating
+        if (etudiant.getNom() != null) {
+            etudiant.setNom(etudiant.getNom());
+        }
+        if (etudiant.getPrenom() != null) {
+            etudiant.setPrenom(etudiant.getPrenom());
+        }
+        if (etudiant.getClasse() != null) {
+            etudiant.setClasse(etudiant.getClasse());
+        }
+        if (etudiant.getNbAbsences() != 0) {
+            etudiant.setNbAbsences(etudiant.getNbAbsences());
+        }
+
+            etudiant.setReussite(etudiant.isReussite());
+        
         return etudiantRepository.save(etudiant);
     }
 }

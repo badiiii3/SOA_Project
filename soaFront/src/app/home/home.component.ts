@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { EtudiantService } from '../services/etudiant.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Etudiant } from '../model/Etudiant';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ import { Etudiant } from '../model/Etudiant';
 export class HomeComponent {
 
   
-  constructor(private etudiantService: EtudiantService){}
+  constructor(private etudiantService: EtudiantService,private router: Router){}
   userDetails: Etudiant[] = [];
   ngOnInit(): void {
     this.loadUsers();
@@ -33,9 +34,9 @@ export class HomeComponent {
     }
   );
 }
-editUser(_t31: Etudiant) {
-  throw new Error('Method not implemented.');
-  }
+editUser(userId: number): void {
+  this.router.navigate(['/edit', userId]);
+}
 
 
   deleteUser(userId: number): void {

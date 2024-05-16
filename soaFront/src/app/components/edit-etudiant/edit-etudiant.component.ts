@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Etudiant } from 'src/app/model/Etudiant';
 import { EtudiantService } from 'src/app/services/etudiant.service';
 
@@ -13,26 +13,30 @@ export class EditEtudiantComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private etudiantService: EtudiantService
   ) { }
 
   ngOnInit(): void {
-    // this.route.params.subscribe(params => {
-    //   const userId = +params['id']; // Extract id from route parameter
-    //   this.loadUser(userId);
-    // });
+    this.route.params.subscribe(params => {
+      const userId = +params['id']; // Extract id from route parameter
+      this.loadUser(userId);
+    });
   }
 
-  // loadUser(userId: number): void {
-  //   this.etudiantService.getUserById(userId).subscribe(user => {
-  //     this.user = user;
-  //   });
-  // }
+  loadUser(userId: number): void {
+    this.etudiantService.getUserById(userId).subscribe(user => {
+      this.user = user;
+    });
+  }
 
   onSubmit(): void {
+    console.log(this.user);
+    
     this.etudiantService.updateUser(this.user).subscribe(
       () => {
         console.log('User updated successfully');
+        this.router.navigate(['/']);
       },
       (error) => {
         console.error('Error updating user:', error);
